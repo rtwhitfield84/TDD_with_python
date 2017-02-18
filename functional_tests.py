@@ -1,15 +1,27 @@
 from selenium import webdriver
+import unittest
 
-browser = webdriver.Chrome('/Users/rico/Downloads/chromedriver')
+class NewVisitorTest(unittest.TestCase):
 
-#judith has heard about a cool new online todo app
-#she goes to check it out
-browser.get('http://localhost:8000')
+	def setUp(self):
+		self.browser = webdriver.Chrome(executable_path='/usr/local/bin/chromedriver')
 
-#she notices the page titel and header mention to-do lists
-assert 'To-Do' in browser.title
+	def tearDown(self):
+		self.browser.quit()
 
-#she is invited to enter a to-do item straight away
+	def tet_can_start_a_list_and_retrieve_it_later(self):
+		#judith has heard about a cool new online todo app
+		#she goes to check it out
+		self.browser.get('http://localhost:8000')
+		
+		#she notices the page title and header mention to-do lists
+		self.assrtIn('To-Do' self.browser.title)
+		self.fail('Finish the test!')
+
+		#she is invited to enter a to-do item straight away
+
+
+
 
 #she types "buy some feathers" into a text box
 
@@ -29,4 +41,5 @@ assert 'To-Do' in browser.title
 
 #satisfied she goes back to sleep
 
-browser.quit()
+if __name__ == '__main__':
+	unittest.main(warnings='ignore')

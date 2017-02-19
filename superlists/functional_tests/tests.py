@@ -30,7 +30,8 @@ class NewVisitorTest(StaticLiveServerTestCase):
         self.assertIn('To-Do', header_text)
 
         # She is invited to enter a to-do item straight away
-        inputbox = self.browser.find_element_by_id('id_new_item')
+        time.sleep(1)
+        inputbox = self.browser.find_element_by_tag_name('input')
         self.assertEqual(
             inputbox.get_attribute('placeholder'),
             'Enter a to-do item'
@@ -51,7 +52,7 @@ class NewVisitorTest(StaticLiveServerTestCase):
         # enters "Use peacock feathers to make a fly" (Edith is very
         # methodical)
         time.sleep(1)
-        inputbox = self.browser.find_element_by_id('id_new_item')
+        inputbox = self.browser.find_element_by_tag_name('input')
         inputbox.send_keys('Use peacock feathers to make a fly')
         inputbox.send_keys(Keys.ENTER)
 
@@ -75,7 +76,8 @@ class NewVisitorTest(StaticLiveServerTestCase):
 
         # Francis starts a new list by entering a new item. He
         # is less interesting than Edith...
-        inputbox = self.browser.find_element_by_id('id_new_item')
+        time.sleep(1)
+        inputbox = self.browser.find_element_by_tag_name('input')
         inputbox.send_keys('Buy milk')
         inputbox.send_keys(Keys.ENTER)
 
@@ -98,7 +100,8 @@ class NewVisitorTest(StaticLiveServerTestCase):
         self.browser.set_window_size(1024, 768)
 
         # She notices the input box is nicely centered
-        inputbox = self.browser.find_element_by_id('id_new_item')
+        time.sleep(1)
+        inputbox = self.browser.find_element_by_tag_name('input')
         self.assertAlmostEqual(
             inputbox.location['x'] + inputbox.size['width'] / 2,
             512,
@@ -108,7 +111,8 @@ class NewVisitorTest(StaticLiveServerTestCase):
         # She starts a new list and sees the input is nicely
         # centered there too
         inputbox.send_keys('testing\n')
-        inputbox = self.browser.find_element_by_id('id_new_item')
+        time.sleep(1)
+        inputbox = self.browser.find_element_by_tag_name('input')
         self.assertAlmostEqual(
             inputbox.location['x'] + inputbox.size['width'] / 2,
             512,
